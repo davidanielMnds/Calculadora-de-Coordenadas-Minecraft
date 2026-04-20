@@ -3,10 +3,10 @@ package model;
 
 public class Coordenada {
     private int pos_x;
-    private int pos_y;
+    private int pos_z;
     private static Coordenada instance;
     
-    private Coordenada() {this.pos_x=0; this.pos_y=0;}
+    private Coordenada() {this.pos_x=0; this.pos_z=0;}
     
     public static Coordenada getInstance()
     {
@@ -16,8 +16,26 @@ public class Coordenada {
         }
         return instance;
     }
-    private int getPos_x() {return pos_x;}
-    private int getPos_y() {return pos_y;}
-    private void setPos_x (int newPos_x) {pos_x = newPos_x;}
-    private void setPos_y (int newPos_y) {pos_y; = newPos_y;}
+    public int getPos_x() {return pos_x;}
+    public int getPos_z() {return pos_z;}
+    private void setPos_x(int newPosX) {pos_x=newPosX;}
+    private void setPos_z(int newPosZ) {pos_z=newPosZ;}
+    
+    
+    
+    public void OverWorld_Nether(int posX, int posZ, int pularX, int pularZ)
+    {
+        int novaX = (posX + pularX) / 8;
+        int novaZ = (posZ + pularZ) / 8;
+        setPos_x(novaX);
+        setPos_z(novaZ);
+    }
+    
+    public void Nether_OverWorld(int posX, int posZ, int pularX, int pularZ)
+    {
+        int novaX = (posX + pularX) * 8;
+        int novaZ = (posZ + pularZ) * 8;
+        setPos_x(novaX);
+        setPos_z(novaZ);
+    }
 }
